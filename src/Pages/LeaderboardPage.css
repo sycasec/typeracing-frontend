@@ -1,0 +1,12 @@
+.lb-page-container {
+    background-image: url("../assets/background-1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    display: flex;
+    place-items: center;
+}
