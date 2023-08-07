@@ -8,5 +8,21 @@
     overflow-y: hidden;
     overflow-x: hidden;
     display: flex;
+    flex-direction: column;
     place-items: center;
+}
+
+.lb-page-title-container {
+    display: flex;
+    place-items: center;
+    margin-bottom: none;
+    margin-right: 3vw;
+}
+
+.lb-page-header-container {
+    display: flex;
+    place-items: center;
+    border: 1px;
+    border-style: dashed;
+    border-color: red;
 }
