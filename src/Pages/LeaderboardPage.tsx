@@ -1,6 +1,9 @@
 import './LeaderboardPage.css';
+
 import title from '../assets/title-cropped.png'
 import header from '../assets/lb-header.png'
+
+import Leaderboard from '../Components/Leaderboard';
 
 const LeaderboardPage: React.FC = () => {
     return (
@@ -11,6 +14,7 @@ const LeaderboardPage: React.FC = () => {
             <div className="lb-page-header-container">
                 <img src={header} alt="header" className="lb-page-header" />
             </div>
+            <Leaderboard/>
 
         </div>
     );
