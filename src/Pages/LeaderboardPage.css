@@ -10,6 +10,7 @@
     display: flex;
     flex-direction: column;
     place-items: center;
+    z-index: -69;
 }
 
 .lb-page-title-container {
@@ -22,7 +23,8 @@
 .lb-page-header-container {
     display: flex;
     place-items: center;
-    border: 1px;
-    border-style: dashed;
-    border-color: red;
+    position: relative;
+    margin-bottom: -2vh;
+    z-index: 1;
 }
+

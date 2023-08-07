@@ -1,0 +1,18 @@
+.leaderboard-table-container {
+    width: 60vw;
+    border: 5px solid #c3c3c3;
+    border-radius: 10px;
+    position: relative;
+    z-index: 10000000009;
+}
+
+.ant-table .ant-table-container .ant-table-content .ant-table-thead .ant-table-cell {
+    background-color: #104A01;
+    color: #B2FFB1;
+    box-shadow: 0px -18px 29px 0px rgba(31, 224, 0, 0.25) inset;
+    border-style: none;
+}
+
+:where(.css-dev-only-do-not-override-fpg3f5).ant-table-wrapper .ant-table-thead >tr>th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before, :where(.css-dev-only-do-not-override-fpg3f5).ant-table-wrapper .ant-table-thead >tr>td:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
+    width: 0;
+}

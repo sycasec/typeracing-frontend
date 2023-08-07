@@ -8,14 +8,39 @@ import { Table } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
 import { useEffect } from 'react';
 
+declare var require: any
 
 const Leaderboard: React.FC = () => {
+    // var localizedFormat = require('dayjs/plugin/localizedFormat');
+    // var localeData = require('dayjs/plugin/localeData');
+    // dayjs.extend(localizedFormat);
+    // dayjs.extend(localeData)
 
     const tempData: Player[] = [
         {
             ID: 0,
+            Rank: 1,
             Name: 'Kyle',
             Score: 99.99,
+            Raw: 169.99,
+            Accuracy: 69.69,
+            DateTime: dayjs() 
+        },
+        {
+            ID: 1,
+            Rank: 2,
+            Name: 'Not Kyle',
+            Score: 199.99,
+            Raw: 269.99,
+            Accuracy: 69.69,
+            DateTime: dayjs() 
+        },
+        {
+            ID: 2,
+            Rank: 3,
+            Name: 'Is Kyle?',
+            Score: 29.99,
+            Raw: 129.99,
             Accuracy: 69.69,
             DateTime: dayjs() 
         }
@@ -23,29 +48,54 @@ const Leaderboard: React.FC = () => {
 
     const columns: ColumnsType<Player> = [
         {
-            title: "Name",
+            title: "RANK",
+            dataIndex: "Rank",
+            key: "Rank",
+            align: 'center'
+        },
+        {
+            title: "NAME",    
             dataIndex: "Name",
             key: "Name",
+            align: 'center'
         },
         {
-            title: "Score",
+            title: "WPM",
             dataIndex: "Score",
             key: "Score",
+            align: 'center'
         },
         {
-            title: "Accuracy",
+            title: "RAW",
+            dataIndex: "Raw",
+            key: "Raw",
+            align: 'center'
+        },
+        {
+            title: "ACCURACY",
             dataIndex: "Accuracy",
             key: "Accuracy",
+            align: 'center'
+        },
+        {
+            title: "TIME",
+            dataIndex: "DateTime",
+            key: "DateTime",
+            align: 'center',
+            render: (value: Dayjs) => value.format('DD-MM-YY@HH:mm:ss') 
         }
     ]
 
     return(
         <div className="leaderboard-container">
-            < Table<Player> 
-                columns={columns} 
-                dataSource={tempData} 
-                pagination={{hideOnSinglePage:true}}
-            />
+            <div className="leaderboard-table-container">
+                < Table<Player> 
+                    columns={columns} 
+                    dataSource={tempData} 
+                    pagination={{hideOnSinglePage:true}}
+                    bordered={false}
+                />
+            </div>
         </div>
     );
 };
