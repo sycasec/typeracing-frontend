@@ -7,14 +7,26 @@ import type { ColumnsType } from 'antd/es/table';
 import { Table } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
 import { useEffect } from 'react';
+import axios from 'axios';
+
+import { getPlayersSorted } from '../ApiCalls/PlayerAPI';
 
 declare var require: any
 
 const Leaderboard: React.FC = () => {
-    // var localizedFormat = require('dayjs/plugin/localizedFormat');
-    // var localeData = require('dayjs/plugin/localeData');
-    // dayjs.extend(localizedFormat);
-    // dayjs.extend(localeData)
+
+    useEffect(() => {
+        async function fetchData() {
+          try {
+            const response = await axios.get('http://192.168.1.15/api/Player');
+            console.log(response.data); // Assuming your API returns an array of data
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        }
+    
+        fetchData();
+      }, []);
 
     const tempData: Player[] = [
         {
