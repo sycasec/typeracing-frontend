@@ -19,7 +19,6 @@ const Leaderboard: React.FC = () => {
     const tempData: Player[] = [
         {
             ID: 0,
-            Rank: 1,
             Name: 'Kyle',
             Score: 99.99,
             Raw: 169.99,
@@ -28,7 +27,6 @@ const Leaderboard: React.FC = () => {
         },
         {
             ID: 1,
-            Rank: 2,
             Name: 'Not Kyle',
             Score: 199.99,
             Raw: 269.99,
@@ -37,7 +35,6 @@ const Leaderboard: React.FC = () => {
         },
         {
             ID: 2,
-            Rank: 3,
             Name: 'Is Kyle?',
             Score: 29.99,
             Raw: 129.99,
@@ -45,6 +42,13 @@ const Leaderboard: React.FC = () => {
             DateTime: dayjs() 
         }
     ]
+
+    const rankedData = tempData.map(( player, index) => {
+        return {
+            ...player,
+            Rank: index + 1,
+        };
+    });
 
     const columns: ColumnsType<Player> = [
         {
@@ -91,7 +95,7 @@ const Leaderboard: React.FC = () => {
             <div className="leaderboard-table-container">
                 < Table<Player> 
                     columns={columns} 
-                    dataSource={tempData} 
+                    dataSource={rankedData} 
                     pagination={{hideOnSinglePage:true}}
                     bordered={false}
                 />
