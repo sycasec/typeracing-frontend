@@ -6,27 +6,26 @@ import type { ColumnsType } from 'antd/es/table';
 
 import { Table } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
-import { useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 import { getPlayersSorted } from '../ApiCalls/PlayerAPI';
 
-declare var require: any
-
 const Leaderboard: React.FC = () => {
+    const [players, setPlayers] = useState<Player[]>([]);
+    // const [isPlayersChanged, setIsPlayersChanged] = useState(false);
 
     useEffect(() => {
-        async function fetchData() {
-          try {
-            const response = await axios.get('http://192.168.1.15/api/Player');
-            console.log(response.data); // Assuming your API returns an array of data
-          } catch (error) {
-            console.error('Error fetching data:', error);
-          }
-        }
-    
-        fetchData();
-      }, []);
+        getPlayersSorted()
+            .then((response) => {
+                setPlayers(response.data.data)
+            });
+
+        const convertedPlayers = players.map(player => ({
+            ...player,
+            DateTime: dayjs(player.DateTime)
+        }));
+        setPlayers(convertedPlayers);
+    }, [])
 
     const tempData: Player[] = [
         {
@@ -35,7 +34,7 @@ const Leaderboard: React.FC = () => {
             Score: 99.99,
             Raw: 169.99,
             Accuracy: 69.69,
-            DateTime: dayjs() 
+            DateTime: dayjs()
         },
         {
             ID: 1,
@@ -43,7 +42,7 @@ const Leaderboard: React.FC = () => {
             Score: 199.99,
             Raw: 269.99,
             Accuracy: 69.69,
-            DateTime: dayjs() 
+            DateTime: dayjs()
         },
         {
             ID: 2,
@@ -51,64 +50,61 @@ const Leaderboard: React.FC = () => {
             Score: 29.99,
             Raw: 129.99,
             Accuracy: 69.69,
-            DateTime: dayjs() 
+            DateTime: dayjs()
         }
     ]
-
-    const rankedData = tempData.map(( player, index) => {
-        return {
-            ...player,
-            Rank: index + 1,
-        };
-    });
 
     const columns: ColumnsType<Player> = [
         {
             title: "RANK",
             dataIndex: "Rank",
             key: "Rank",
-            align: 'center'
+            align: 'center',
+            render: (_: any, __: Player, index: number) => index + 1
         },
         {
-            title: "NAME",    
-            dataIndex: "Name",
-            key: "Name",
+            title: "NAME",
+            dataIndex: "name",
+            key: "name",
             align: 'center'
         },
         {
             title: "WPM",
-            dataIndex: "Score",
-            key: "Score",
+            dataIndex: "score",
+            key: "score",
             align: 'center'
         },
         {
             title: "RAW",
-            dataIndex: "Raw",
-            key: "Raw",
+            dataIndex: "raw",
+            key: "raw",
             align: 'center'
         },
         {
             title: "ACCURACY",
-            dataIndex: "Accuracy",
-            key: "Accuracy",
+            dataIndex: "accuracy",
+            key: "accuracy",
             align: 'center'
         },
         {
             title: "TIME",
-            dataIndex: "DateTime",
-            key: "DateTime",
+            dataIndex: "timestamp",
+            key: "timestamp",
             align: 'center',
-            render: (value: Dayjs) => value.format('DD-MM-YY@HH:mm:ss') 
+            // render: (value: Dayjs) => value.format('DD-MM-YY@HH:mm:ss')
         }
     ]
 
-    return(
+    console.log(players)
+
+    return (
         <div className="leaderboard-container">
             <div className="leaderboard-table-container">
-                < Table<Player> 
-                    columns={columns} 
-                    dataSource={rankedData} 
-                    pagination={{hideOnSinglePage:true}}
+                < Table<Player>
+                    columns={columns}
+                    dataSource={players}
+                    rowKey="ID"
+                    pagination={{ hideOnSinglePage: true }}
                     bordered={false}
                 />
             </div>
