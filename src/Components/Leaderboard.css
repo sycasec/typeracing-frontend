@@ -1,18 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Arimo&display=swap');
+
+* {
+    font-family: Arimo;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 .leaderboard-table-container {
     width: 60vw;
     border: 5px solid #c3c3c3;
-    border-radius: 10px;
+    border-radius: 13px;
     position: relative;
-    z-index: 10000000009;
+    z-index: 10;
 }
 
-.ant-table .ant-table-container .ant-table-content .ant-table-thead .ant-table-cell {
-    background-color: #104A01;
-    color: #B2FFB1;
+.ant-table-thead .ant-table-cell {
+    background-color: #104A01 !important;
+    color: #B2FFB0;
     box-shadow: 0px -18px 29px 0px rgba(31, 224, 0, 0.25) inset;
     border-style: none;
 }
 
+:where(.css-dev-only-do-not-override-fpg3f5).ant-table-wrapper .ant-table-thead >tr>th, :where(.css-dev-only-do-not-override-fpg3f5).ant-table-wrapper .ant-table-thead >tr>td {
+    color: #B2FFB0;
+    font-family: "Aoboshi One";
+    font-weight: 400;
+}
+  
+
 :where(.css-dev-only-do-not-override-fpg3f5).ant-table-wrapper .ant-table-thead >tr>th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before, :where(.css-dev-only-do-not-override-fpg3f5).ant-table-wrapper .ant-table-thead >tr>td:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
     width: 0;
+}
+
+.leaderboard-table-actual {
+    overflow-y: auto;
 }
