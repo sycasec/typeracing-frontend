@@ -1,4 +1,9 @@
-# React + TypeScript + Vite
+# Config
+if database is run locally
+- find PlayerAPI.tsx
+- for every instance that the variable `URL` is used, change it to `LocalURL`
+
+## React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
