@@ -1,12 +1,13 @@
 import axios from "axios";
-import { BackendURL } from "../Helpers/sourceinfo";
+import { BackendURL, localhostURL } from "../Helpers/sourceinfo";
 
 export const URL = BackendURL;
+export const localURL = localhostURL;
 
-export const postAPICall = (url: string, data:object) => {
-    return axios.post(url, data);
+export const postAPICall = (url: string, headers:object) => {
+    return axios.post(url, headers);
 }
 
-export const getAPICall = (url: string, data: object) => {
-    return axios.get(url, data);
+export const getAPICall = (url: string, headers: object) => {
+    return axios.get(url, headers);
 }

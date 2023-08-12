@@ -19,7 +19,7 @@ const Leaderboard: React.FC = () => {
             .then((response) => {
                 // console.log(response.data.data)
                 const playerData = response.data.data;
-
+                console.log(playerData);
                 const convertedData = playerData.map(player => ({
                     ...player,
                     timestamp: dayjs(player.timestamp).format('YYYY-MM-DD HH:mm:ss')

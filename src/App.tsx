@@ -2,7 +2,7 @@ import './App.css'
 import LeaderboardPage from './Pages/Leaderboard/LeaderboardPage';
 import AddPlayerPage from './Pages/AddPlayer/AddPlayerPage';
 
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
 
