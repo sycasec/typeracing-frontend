@@ -44,7 +44,7 @@ const AddPlayerPage: React.FC = () => {
             addPlayer(newPlayer)
                 .then((response) => {
                     console.log(response)
-                          
+                    toast.success("New Player added!")
                     setTimeout(() => {
                         navigate("/")
                     }, 2000)
