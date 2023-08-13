@@ -6,7 +6,7 @@ import Player from "../Types/Player";
 export const getPlayersSorted = async () => {
     try {
         // change to localURL if backend run locally
-        const response = await getAPICall(URL + "Player/sorted", {})
+        const response = await getAPICall(localURL + "Player/sorted", {})
         return { data: response.data };
     } catch (error) {
         return { data: error };
@@ -15,7 +15,7 @@ export const getPlayersSorted = async () => {
 
 export const addPlayer = async (newPlayer: Player) => {
     try {
-        const response = await postAPICall(URL + "Player", newPlayer);
+        const response = await postAPICall(localURL + "Player", newPlayer);
         console.log('Player added')
         console.log(response)
     } catch (error) {

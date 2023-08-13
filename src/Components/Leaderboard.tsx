@@ -6,6 +6,7 @@ import columns from './tableColumns';
 
 import { Table } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect } from 'react';
 
 import { getPlayersSorted } from '../ApiCalls/PlayerAPI';

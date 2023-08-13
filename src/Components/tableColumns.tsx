@@ -1,13 +1,27 @@
 import type { ColumnsType } from 'antd/es/table';
 import Player from '../Types/Player';
 
+import gold from '../assets/icon-park_gold-medal-two.png'
+import silver from '../assets/icon-park_silver-medal-two.png'
+import bronze from '../assets/icon-park_bronze-medal-two.png'
+
 const columns: ColumnsType<Player> = [
     {
         title: "RANK",
         dataIndex: "Rank",
         key: "Rank",
         align: 'center',
-        render: (_: any, __: Player, index: number) => index + 1
+        render: (text, record, index) => (
+            <span style={{alignItems: 'center' }}>
+              {index < 3 ? (
+                <img
+                src={index === 0 ? gold : index === 1 ? silver : bronze}
+                alt={`Rank ${index + 1}`}
+                style={{ width: '30px', marginBottom: '-10px' }}
+              />
+              ) : (`${index+1}`)}
+            </span>
+          ),
     },
     {
         title: "USERNAME",

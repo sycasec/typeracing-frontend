@@ -35,3 +35,10 @@
 .leaderboard-table-actual {
     overflow-y: auto;
 }
+
+.leaderboard-table-actual tr:nth-child(2n) td {
+    background-color: rgba(110, 167, 76, 0.50);
+}
+.leaderboard-table-actual thead {
+    background-color: rgba(110, 167, 76, 0.50);
+}
